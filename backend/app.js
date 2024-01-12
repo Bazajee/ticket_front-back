@@ -7,10 +7,10 @@ const prisma = new PrismaClient()
 
 app.use(express.json())
 
-app.get('/api/ticket', async (req, res) => {
-   const ticketList = await prisma.ticket.findMany({})
-   console.log('ticketList', ticketList)
-   res.send(ticketList)
+app.get('/api/tickets', async (req, res) => {
+   const ticketsList = await prisma.ticket.findMany({})
+   console.log('ticketsList', ticketsList)
+   res.send(ticketsList)
 })
 
 app.post('/api/ticket', async (req, res) => {
@@ -21,6 +21,20 @@ app.post('/api/ticket', async (req, res) => {
    res.send(ticket)
 })
 
+app.get ('/api/ticket/:id', async (req, res) => {
+   const urlId = req.params.id
+   const ticket = await  prisma.ticket.findUnique({
+      where: {
+         id: parseInt(urlId)
+      }
+   })
+   res.send(ticket)
+
+})
+
 app.listen(3000, function() {
    console.log('listening to port 3000')
 })
+
+
+
