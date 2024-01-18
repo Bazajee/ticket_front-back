@@ -1,4 +1,8 @@
 <template>
+    <div>
+        <Toolbar class="sticky"></Toolbar>
+    </div>
+
     <div class="max-w-md mx-auto mt-8">
         <!-- Email Input -->
         <label class="block mt-4 text-sm font-medium text-gray-700">Email</label>
@@ -42,6 +46,10 @@
 <script setup>
 import { ref, computed } from 'vue'
 import router from '/src/router'
+
+import Toolbar from '../components/Toolbar.vue';
+
+
 
 const formData = ref({
     email: null,
