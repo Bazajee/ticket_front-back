@@ -22,7 +22,7 @@
 import { ref, onMounted, computed, watch } from 'vue'
 import { format } from 'date-fns'
 
-import { asyncTicket } from '../use/useTickets';
+import { asyncTicket } from '../use/useTickets'
 
 
 
