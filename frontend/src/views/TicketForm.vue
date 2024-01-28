@@ -37,9 +37,6 @@
             class="mt-4 p-2 text-white rounded-md hover:valid:bg-blue-600 bg-blue-500 disabled:bg-red-600">
             Valider
         </button>
-
-
-        <router-view></router-view>
     </div>
 </template>
   

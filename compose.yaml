@@ -1,0 +1,37 @@
+services:
+   nginx:
+      image: nginx:latest
+      ports:
+         - 81:80
+      volumes: 
+         - nginx-conf: /etc/nginx/conf.d/
+         - static-fil: /var/www
+      networks :
+         nginx: nginx-net
+   nodejs:
+      build:
+         context: .
+      networks: 
+         - nginx-net
+         - postgresql-net
+
+   posgtresql:
+      image: postgres:14
+      env_file: postgresql.env
+      volumes: 
+         - postgresql-data:var/lib/postgresql/data/
+      networks:
+         - postgresql-net
+
+
+
+networks:
+   nginx-net: 
+   postgresqil-net:
+
+volumes:
+   postgresql-data:
+   nginx-conf:
+   static-file:
+
+      
