@@ -36,6 +36,7 @@ app.get('/api/tickets', async (req, res) => {
 })
 
 app.post('/api/ticket', async (req, res) => {
+
    const ticket = await prisma.ticket.create({
       data: req.body
    })
@@ -56,13 +57,18 @@ app.get ('/api/ticket/:id', async (req, res) => {
 
 app.post('/api/auth', async (req, res) =>{
    const data = req.body
+   console.log(data)
 
    let userObject =  'null'
    userObject = userData.find( user => user.email === data.email)
 
    const compare = await bcrypt.compare(data.pwd, userObject.password)
-
+   if (compare) {
+   
+   res.cookie("my cookie", {1: "cookie data"})
    res.send(userObject)
+   }
+   else {res.send(compare)}
 })
 
 app.listen(3000, function() {
