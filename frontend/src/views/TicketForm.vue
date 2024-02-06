@@ -41,10 +41,16 @@
 </template>
   
 <script setup>
-import { ref, computed } from 'vue'
-import router from '/src/router'
 
+import { ref, computed } from 'vue'
+import router from '/src/router';
 import Toolbar from '../components/Toolbar.vue';
+
+
+
+
+
+
 
 
 
@@ -65,7 +71,6 @@ const submitForm = async () => {
         body: JSON.stringify(formData.value),
     });
     const createdTicket = await response.json()
-    console.log('createdTicket', createdTicket)
     router.push(`/recap/${createdTicket.id}`)
 }
 
