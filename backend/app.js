@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 const app = express()
 const prisma = new PrismaClient()
 
-
+// ==============================================================>  Data  <==================================================================================================
 
 let userData = [
 
@@ -24,14 +24,15 @@ let userData = [
 
 ]
 
-
+// ==================================================================================================================================================================================
 
 app.use(express.json())
 
 
 app.get('/api/tickets', async (req, res) => {
+   const cookie = req.cookies
+   console.log(cookie)
    const ticketsList = await prisma.ticket.findMany({})
-   console.log("lsl")
    res.send(ticketsList)
 })
 
@@ -57,18 +58,16 @@ app.get ('/api/ticket/:id', async (req, res) => {
 
 app.post('/api/auth', async (req, res) =>{
    const data = req.body
-   console.log(data)
-
-   let userObject =  'null'
-   userObject = userData.find( user => user.email === data.email)
-
+   let userObject = userData.find( user => user.email === data.email)
+   const token = jwt.sign({_id: userObject.id},"secret")
    const compare = await bcrypt.compare(data.pwd, userObject.password)
    if (compare) {
-   
-   res.cookie("my cookie", {1: "cookie data"})
-   res.send(userObject)
+      res.cookie("jwtAuth", token, {
+         sameSite: true,
+         maxAge: 24*60*60*1000,
+      })
    }
-   else {res.send(compare)}
+   res.send({message: "auth"})
 })
 
 app.listen(3000, function() {

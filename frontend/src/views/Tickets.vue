@@ -7,7 +7,6 @@
 
       <div class="flex ">   
 
-
             <!-- list -->
             <div class="w-80">
                <div class="sticky top-0 w-full">
@@ -31,7 +30,6 @@
       </div>
    </div>
 
-
 </template>
  
 <script setup>
@@ -45,10 +43,8 @@ import FilterBarPriority from '../components/FilterBarPriority.vue'
 import FilterBarCategory from '../components/FilterBarCategory.vue'
 import router from '/src/router'
 
+
 const route = useRoute()
-
-
-
 
 
 const selectedTicketId = ref(route.params.ticketId)

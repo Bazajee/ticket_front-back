@@ -1,6 +1,9 @@
 <template>
+    <div>
+        <Toolbar></Toolbar>
+    </div>
 
-    <div class="max-w-md mx-auto mt-8">
+    <div v-if="!isAuth" class="max-w-md mx-auto mt-8" >
         <h1 class="block mt-4  font-medium text-gray-700 text-7xl" >Log in </h1>
         <br>
         <!-- Email Input -->
@@ -19,16 +22,18 @@
             Valider
         </button>
     </div>
+    <div v-else>
+        <h1 class="block mt-4  font-medium text-gray-700 text-7xl" > You are login  !</h1>
+
+    </div>
 
 </template>
 
 <script setup> 
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import router from '/src/router'
-
-import Toolbar from '../components/Toolbar.vue';
-
-
+import Toolbar from '../components/Toolbar.vue'
+import { isAuth } from '../use/useTickets'
 
 const formData = ref({
     email: "jc@mail.fr",
@@ -45,7 +50,12 @@ const submitForm = async () => {
         body: JSON.stringify(formData.value),
     });
     const data =  await response.json()
-    console.log(data)
+
+    
+    isAuth ? router.push('/tickets') : router.push('/login')
+    
+
+
 }
 
 
