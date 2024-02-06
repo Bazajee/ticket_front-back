@@ -31,15 +31,23 @@ app.use(express.json())
 
 app.get('/api/tickets', async (req, res) => {
    console.log("in")
-   const cookie = req.headers.cookie.split('=')
-   const token = jwt.verify( cookie[1], "secret")
-   const ticketsList = await prisma.ticket.findMany({
+   const cookie = req.headers.cookie
+   if (!cookie) {{}}
+
+   else {const cookie_sList = cookie.split('=')
+   console.log(cookie)
+   const token = jwt.verify( cookie_sList[1], "secret")
+   if (token._amin) {
+      const ticketList = await prisma.ticket.findMany({})
+      res.send(ticketList)
+   } 
+   else {const ticketsList = await prisma.ticket.findMany({
       where: {
          email: token._id
       }
    })
    console.log(ticketsList)
-   res.send(ticketsList)
+   res.send(ticketsList)}}
 })
 
 app.post('/api/ticket', async (req, res) => {
@@ -65,8 +73,7 @@ app.get ('/api/ticket/:id', async (req, res) => {
 app.post('/api/auth', async (req, res) =>{
    const data = req.body
    let userObject = userData.find( user => user.email === data.email)
-   const token = jwt.sign({_id: userObject.email},"secret")
-   
+   const token = jwt.sign({_id: userObject.email, _amin:userObject.admin},"secret")
    const compare = await bcrypt.compare(data.pwd, userObject.password)
    if (compare) {
       res.cookie("jwtAuth", token, {

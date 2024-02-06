@@ -21,32 +21,36 @@
 
       <label class="block mt-4 text-sm font-medium text-gray-700">Priorité : <span class="mt-1 p-2 w-full">{{
       ticket.priority }} </span></label>
-
-      <a href="/" class="block mt-4 text-blue-500 hover:underline">Saisir une autre demande</a>
+      <button @click="ticketFormRedirect" class="block mt-4 text-blue-500 hover:underline"> fgSaisir une autre demande </button>
+      <!-- <a href="/" class="block mt-4 text-blue-500 hover:underline">Saisir une autre demande</a> -->
    </div>
 </template>
  
 <script setup>
 import { ref, onMounted } from 'vue'
 import Toolbar from '../components/Toolbar.vue'
+import router from "/src/router"
 
 
 
 
 const props = defineProps({
    ticketId: {
-      type: Number,
+      type: String,
       required: true,
    },
 })
 
 const ticket = ref({})
 
+function ticketFormRedirect () {
+   router.push("/ticket")
+}
+
 
 onMounted(async () => {
    const response = await fetch(`/api/ticket/${props.ticketId}`)
    ticket.value = await response.json()
-   console.log(ticket.value.id)
 })
 
 </script>

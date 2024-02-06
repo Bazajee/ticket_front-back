@@ -18,8 +18,24 @@ export const allTickets = computed(() => {
       }
       ticketListComplete.value = true
     })
-return []
+return [] 
 });
+
+export function allTicket_ () {
+   if (ticketListComplete.value) {
+      return Object.values(id2ticket.value)
+    }
+    fetch("/api/tickets")
+     .then((response) => response.json())
+     .then((ticketList) => {
+        for (const ticket of ticketList) {
+           id2ticket.value[ticket.id] = ticket
+        }
+        ticketListComplete.value = true
+      })
+
+
+}
 
 export async function asyncTicket(ticketId) {
    if (id2ticket.value[ticketId] === undefined) {

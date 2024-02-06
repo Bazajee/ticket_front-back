@@ -41,7 +41,7 @@ const formData = ref({
 })
 
 const submitForm = async () => {
-    console.log('data', formData.value)
+
     const response = await fetch('/api/auth', {
         method: 'POST',
         headers: {
@@ -50,12 +50,7 @@ const submitForm = async () => {
         body: JSON.stringify(formData.value),
     });
     const data =  await response.json()
-
-    
     isAuth ? router.push('/tickets') : router.push('/login')
-    
-
-
 }
 
 

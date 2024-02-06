@@ -16,44 +16,44 @@
               Hello
             </button>
             <button
-               v-else
-               @click="homeRedirect"
-               class="pl-2 pr-2 text-white rounded-md bg-blue-500"
+              v-else
+              @click="homeRedirect"
+              class="pl-2 pr-2 text-white rounded-md bg-blue-500"
             >
-               Log In
+              Log In
             </button>
           </li>
           <li>
             <button
-               v-if="isAuth"
-               id="navbar-default#2"
-               @click="logOut"
-               :disabled="!isAuth"
-               class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
-               aria-current="page"
+              v-if="isAuth"
+              id="navbar-default#2"
+              @click="logOut"
+              :disabled="!isAuth"
+              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              aria-current="page"
             >
-               Log out
+              Log out
             </button>
           </li>
 
           <li>
             <button
-               id="navbar-default#1"
-               @click="ticketRedirect"
-               :disabled="!isAuth"
-               class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
-               aria-current="page"
+              id="navbar-default#1"
+              @click="ticketRedirect"
+              :disabled="!isAuth"
+              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              aria-current="page"
             >
               Nouveau Ticket
             </button>
           </li>
           <li>
             <button
-               id="navbar-default#2"
-               @click="ticketsRedirect"
-               :disabled="!isAuth"
-               class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
-               aria-current="page"
+              id="navbar-default#2"
+              @click="ticketsRedirect"
+              :disabled="!isAuth"
+              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              aria-current="page"
             >
               Tickets
             </button>
@@ -71,20 +71,20 @@ import { isAuth, isAuthCheck, removeJwtAuthCookie } from "../use/useTickets";
 isAuthCheck();
 
 function homeRedirect() {
-   isAuthCheck();
-   router.push("/");
+  isAuthCheck();
+  router.push("/");
 }
 function ticketsRedirect() {
-   isAuthCheck();
-   router.push("/tickets");
+  isAuthCheck();
+  router.push("/tickets");
 }
 function ticketRedirect() {
-   isAuthCheck();
-   router.push("/ticket");
+  isAuthCheck();
+  router.push("/ticket");
 }
 function logOut() {
-   removeJwtAuthCookie();
-   router.push("/");
-   isAuthCheck();
+  removeJwtAuthCookie();
+  router.push("/");
+  isAuthCheck();
 }
 </script>

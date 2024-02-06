@@ -35,7 +35,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { filterTickets, allTickets } from '../use/useTickets'
+import { filterTickets, allTickets, allTicket_ } from '../use/useTickets'
 
 import TicketCard from '/src/components/TicketCard.vue'
 import Toolbar from '../components/Toolbar.vue'
@@ -43,9 +43,9 @@ import FilterBarPriority from '../components/FilterBarPriority.vue'
 import FilterBarCategory from '../components/FilterBarCategory.vue'
 import router from '/src/router'
 
-
 const route = useRoute()
 
+allTicket_()
 
 const selectedTicketId = ref(route.params.ticketId)
 
