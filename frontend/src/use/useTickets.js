@@ -33,8 +33,6 @@ export function allTicket_ () {
         }
         ticketListComplete.value = true
       })
-
-
 }
 
 export async function asyncTicket(ticketId) {

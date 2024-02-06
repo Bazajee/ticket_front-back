@@ -28,12 +28,10 @@ let userData = [
 
 app.use(express.json())
 
-
 app.get('/api/tickets', async (req, res) => {
    console.log("in")
    const cookie = req.headers.cookie
    if (!cookie) {{}}
-
    else {const cookie_sList = cookie.split('=')
    console.log(cookie)
    const token = jwt.verify( cookie_sList[1], "secret")
@@ -51,7 +49,6 @@ app.get('/api/tickets', async (req, res) => {
 })
 
 app.post('/api/ticket', async (req, res) => {
-
    const ticket = await prisma.ticket.create({
       data: req.body
    })
