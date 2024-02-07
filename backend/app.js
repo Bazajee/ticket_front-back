@@ -81,8 +81,8 @@ app.post('/api/auth', async (req, res) =>{
    res.send({message: "auth"})
 })
 
-app.listen(3000, function() {
-   console.log('listening to port 3000')
+app.listen(3002, function() {
+   console.log('listening to port 3002')
 })
 
 
