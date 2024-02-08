@@ -3,8 +3,8 @@
 
 <nav class=" bg-white  ">
   <div class=" w-full flex flex-wrap items-center justify-between mx-auto p-4">
-    <div class=" hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white  ">
+    <div class="  w-full block md:w-auto" id="navbar-default">
+      <ul class="font-medium flex  p-0 mt-4  rounded-lg  flex-row space-x-8 rtl:space-x-reverse md:mt-0  bg-white  ">
         <li>
           <button @click="updatePriorityFilter('low')" id="navbar-default#1"  :class="{'bg-gray-200': priorityFilter.includes('low')}" class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"> low</button>
         </li>

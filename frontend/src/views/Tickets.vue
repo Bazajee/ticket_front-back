@@ -9,7 +9,7 @@
 
             <!-- list -->
             <div class="w-80">
-               <div class="sticky top-0 w-full">
+               <div class="sticky top-0 w-full ">
                   <FilterBarCategory class=" overflow-y-hidden"></FilterBarCategory>
                   <FilterBarPriority class=" overflow-y-hidden"></FilterBarPriority>
                </div>
