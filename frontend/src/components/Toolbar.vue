@@ -1,11 +1,11 @@
 <template>
   <nav class="bg-white border-gray-200">
     <div
-      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      class="w-full flex flex-wrap items-center  p-2"
     >
-      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+      <div class=" pl-2 pr-2 w-auto" id="navbar-default">
         <ul
-          class="text-gray-700 font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white"
+          class="text-gray-700 font-medium flex  px-2 py-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 sm:space-x-3 md:space-x-8 rtl:space-x-reverse  "
         >
           <li>
             <button
@@ -29,7 +29,7 @@
               id="navbar-default#2"
               @click="logOut"
               :disabled="!isAuth"
-              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              class="block pl-2 pr-2 rounded md:bg-transparent md:hover:text-blue-700 p-0"
               aria-current="page"
             >
               Log out
@@ -41,7 +41,7 @@
               id="navbar-default#1"
               @click="ticketRedirect"
               :disabled="!isAuth"
-              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              class="block pl-2 pr-2 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
               aria-current="page"
             >
               Nouveau Ticket
@@ -52,7 +52,7 @@
               id="navbar-default#2"
               @click="ticketsRedirect"
               :disabled="!isAuth"
-              class="block py-2 px-3 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
+              class="block pl-2 pr-2 rounded md:bg-transparent md:hover:text-blue-700 md:p-0"
               aria-current="page"
             >
               Tickets

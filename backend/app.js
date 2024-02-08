@@ -33,7 +33,6 @@ app.get('/api/tickets', async (req, res) => {
    const cookie = req.headers.cookie
    if (!cookie) {{}}
    else {const cookie_sList = cookie.split('=')
-   console.log(cookie)
    const token = jwt.verify( cookie_sList[1], "secret")
    if (token._amin) {
       const ticketList = await prisma.ticket.findMany({})
@@ -81,8 +80,8 @@ app.post('/api/auth', async (req, res) =>{
    res.send({message: "auth"})
 })
 
-app.listen(3002, function() {
-   console.log('listening to port 3002')
+app.listen(3000, function() {
+   console.log('listening to port 3000')
 })
 
 
