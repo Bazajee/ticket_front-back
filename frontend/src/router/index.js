@@ -1,13 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import TicketForm from '../views/TicketForm.vue'
-import Login from '../views/Login.vue'
-import Recap from '../views/Recap.vue'
 
 const routes = [
     {
         path: "/",
-        component: Login,
+        component: () => import('/src/views/LogIn.vue'),
         props: true,
 
     },
@@ -32,7 +29,7 @@ const routes = [
     },
     {
         path: "/login",
-        component:Login,
+        component: () => import('/src/views/LogIn.vue'),
         props: true
     },
     {
