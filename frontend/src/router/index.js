@@ -32,7 +32,7 @@ const routes = [
     },
     {
         path: "/login",
-        component: () => import('/src/views/LogIn.vue'),
+        component:Login,
         props: true
     },
     {
