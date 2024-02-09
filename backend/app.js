@@ -36,10 +36,9 @@ app.get('/api/tickets', async (req, res) => {
          email: token._id
       }
    })
-
    console.log(ticketsList)
    res.send(ticketsList)}}
-})
+   )
 
 app.post('/api/ticket', async (req, res) => {
    const ticket = await prisma.ticket.create({
