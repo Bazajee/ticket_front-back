@@ -41,11 +41,13 @@ app.get("/api/tickets", async (req, res) => {
         where: {
           email: token._id,
         },
-      });
+        
+      })
+   res.send(JSON.stringify(ticketsList))
     }
   }
   console.log(JSON.stringify(ticketsList));
-  res.send(JSON.stringify(ticketsList));
+  
 });
 
 app.post("/api/ticket", async (req, res) => {
