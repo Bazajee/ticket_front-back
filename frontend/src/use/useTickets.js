@@ -3,7 +3,7 @@ import { useLocalStorage } from "@vueuse/core"
 import router from "/src/router"
 
 
-const ticketsList_ = useLocalStorage("tickets", [])
+export const ticketsList = useLocalStorage("tickets", [])
 const id2ticket = useLocalStorage("id2ticket",{})
 const ticketListComplete = useLocalStorage("ticket-list-complete", false);
 
@@ -15,16 +15,12 @@ export async function allTicket_ () {
    const rawTickets = await fetch("/api/tickets")
    const ticketStringify = await rawTickets.json()
    for (const ticket of ticketStringify) {
-      ticketsList_.value.push(ticket)
+      ticketsList.value.push(ticket)
       id2ticket.value[ticket.id] = ticket
       
    }
    ticketListComplete.value = true
 }
-
-
-
-console.log( 'out',ticketsList_.value )
 
 export async function asyncTicket(ticketId) {
    if (id2ticket.value[ticketId] === undefined) {
@@ -67,14 +63,14 @@ export function unAuthRedirect() {
 
 // ==================================================================>  Filtering  <==============================================================================================
 
-const listDisplay = ticketsList_.value
+const listDisplay = ticketsList.value
 
 export const categoryFilter = ref(["computer", "furniture"])
 export const priorityFilter = ref(["low", "normal", "high"])
 
 // make condition if the array is empty and improve ui for user perception 
 export const filterTickets = computed(() => {
-   return listDisplay.filter((ticket) => {
+   return ticketsList.value.filter((ticket) => {
       const x = categoryFilter.value.includes(ticket.category);
       const y = priorityFilter.value.includes(ticket.priority);
       return x && y;

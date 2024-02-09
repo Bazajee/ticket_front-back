@@ -45,12 +45,7 @@
 import { ref, computed } from 'vue'
 import router from '/src/router';
 import Toolbar from '../components/Toolbar.vue';
-
-
-
-
-
-
+import { ticketsList } from '../use/useTickets'
 
 
 
@@ -62,7 +57,7 @@ const formData = ref({
 })
 
 const submitForm = async () => {
-    console.log('Form submitted with data:', formData.value)
+    
     const response = await fetch('/api/ticket', {
         method: 'POST',
         headers: {
@@ -71,6 +66,7 @@ const submitForm = async () => {
         body: JSON.stringify(formData.value),
     });
     const createdTicket = await response.json()
+    ticketsList.value.push(createdTicket)
     router.push(`/recap/${createdTicket.id}`)
 }
 
