@@ -29,20 +29,14 @@ let userData = [
 app.use(express.json())
 
 app.get('/api/tickets', async (req, res) => {
-   console.log("in")
    const cookie = req.headers.cookie
    if (!cookie) {{}}
-   else {const cookie_sList = cookie.split('=')
-   const token = jwt.verify( cookie_sList[1], "secret")
-   if (token._amin) {
-      const ticketList = await prisma.ticket.findMany({})
-      res.send(ticketList)
-   } 
    else {const ticketsList = await prisma.ticket.findMany({
       where: {
          email: token._id
       }
    })
+
    console.log(ticketsList)
    res.send(ticketsList)}}
 })
@@ -63,7 +57,6 @@ app.get ('/api/ticket/:id', async (req, res) => {
       }
    })
    res.send(ticket)
-
 })
 
 app.post('/api/auth', async (req, res) =>{
