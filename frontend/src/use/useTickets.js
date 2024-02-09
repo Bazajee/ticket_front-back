@@ -1,39 +1,30 @@
-import { ref, computed, onMounted } from "vue"
+import { ref, computed } from "vue"
 import { useLocalStorage } from "@vueuse/core"
 import router from "/src/router"
 
-const id2ticket = useLocalStorage("id2ticket", {})
+
+const ticketsList_ = useLocalStorage("tickets", [])
+const id2ticket = useLocalStorage("id2ticket",{})
 const ticketListComplete = useLocalStorage("ticket-list-complete", false);
 
-// Remove the fetch of the computed
-export const allTickets = computed(() => {
-  if (ticketListComplete.value) {
-    return Object.values(id2ticket.value)
-  }
-  fetch("/api/tickets")
-   .then((response) => response.json())
-   .then((ticketList) => {
-      for (const ticket of ticketList) {
-         id2ticket.value[ticket.id] = ticket
-      }
-      ticketListComplete.value = true
-    })
-return [] 
-});
 
-export function allTicket_ () {
+export async function allTicket_ () {
    if (ticketListComplete.value) {
       return Object.values(id2ticket.value)
-    }
-    fetch("/api/tickets")
-     .then((response) => response.json())
-     .then((ticketList) => {
-        for (const ticket of ticketList) {
-           id2ticket.value[ticket.id] = ticket
-        }
-        ticketListComplete.value = true
-      })
+   }
+   const rawTickets = await fetch("/api/tickets")
+   const ticketStringify = await rawTickets.json()
+   for (const ticket of ticketStringify) {
+      ticketsList_.value.push(ticket)
+      id2ticket.value[ticket.id] = ticket
+      
+   }
+   ticketListComplete.value = true
 }
+
+allTicket_()
+
+console.log( 'out',ticketsList_.value )
 
 export async function asyncTicket(ticketId) {
    if (id2ticket.value[ticketId] === undefined) {
@@ -76,13 +67,14 @@ export function unAuthRedirect() {
 
 // ==================================================================>  Filtering  <==============================================================================================
 
-const listDisplay = ref(allTickets.value)
+const listDisplay = ticketsList_.value
+
 export const categoryFilter = ref(["computer", "furniture"])
 export const priorityFilter = ref(["low", "normal", "high"])
 
 // make condition if the array is empty and improve ui for user perception 
 export const filterTickets = computed(() => {
-   return listDisplay.value.filter((ticket) => {
+   return listDisplay.filter((ticket) => {
       const x = categoryFilter.value.includes(ticket.category);
       const y = priorityFilter.value.includes(ticket.priority);
       return x && y;

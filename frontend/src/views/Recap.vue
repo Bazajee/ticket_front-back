@@ -21,8 +21,8 @@
 
       <label class="block mt-4 text-sm font-medium text-gray-700">Priorité : <span class="mt-1 p-2 w-full">{{
       ticket.priority }} </span></label>
-      <button @click="ticketFormRedirect" class="block mt-4 text-blue-500 hover:underline"> fgSaisir une autre demande </button>
-      <!-- <a href="/" class="block mt-4 text-blue-500 hover:underline">Saisir une autre demande</a> -->
+      <button @click="ticketFormRedirect" class="block mt-4 text-blue-500 hover:underline"> Saisir une autre demande </button>
+      
    </div>
 </template>
  

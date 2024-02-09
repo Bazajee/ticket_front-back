@@ -71,20 +71,21 @@ import { isAuth, isAuthCheck, removeJwtAuthCookie } from "../use/useTickets";
 isAuthCheck();
 
 function homeRedirect() {
-  isAuthCheck();
-  router.push("/");
+  isAuthCheck()
+  router.push("/")
 }
 function ticketsRedirect() {
   isAuthCheck();
-  router.push("/tickets");
+  router.push("/tickets")
 }
 function ticketRedirect() {
   isAuthCheck();
-  router.push("/ticket");
+  router.push("/ticket")
 }
 function logOut() {
-  removeJwtAuthCookie();
-  router.push("/");
-  isAuthCheck();
+  removeJwtAuthCookie()
+  router.push("/")
+  localStorage.clear()
+  isAuthCheck()
 }
 </script>

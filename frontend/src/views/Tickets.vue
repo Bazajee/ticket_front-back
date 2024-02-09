@@ -33,9 +33,9 @@
 </template>
  
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { filterTickets, allTickets, allTicket_ } from '../use/useTickets'
+import { filterTickets, allTicket_} from '../use/useTickets'
 
 import TicketCard from '/src/components/TicketCard.vue'
 import Toolbar from '../components/Toolbar.vue'
@@ -45,7 +45,6 @@ import router from '/src/router'
 
 const route = useRoute()
 
-allTicket_()
 
 const selectedTicketId = ref(route.params.ticketId)
 

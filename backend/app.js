@@ -46,7 +46,7 @@ app.get("/api/tickets", async (req, res) => {
    res.send(JSON.stringify(ticketsList))
     }
   }
-  console.log(JSON.stringify(ticketsList));
+
   
 });
 
