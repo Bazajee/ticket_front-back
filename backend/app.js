@@ -44,8 +44,8 @@ app.get("/api/tickets", async (req, res) => {
       });
     }
   }
-  console.log(ticketsList);
-  res.send(ticketsList);
+  console.log(JSON.stringify(ticketsList));
+  res.send(JSON.stringify(ticketsList));
 });
 
 app.post("/api/ticket", async (req, res) => {
