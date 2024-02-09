@@ -45,6 +45,8 @@ import router from '/src/router'
 
 const route = useRoute()
 
+allTicket_()
+
 
 const selectedTicketId = ref(route.params.ticketId)
 

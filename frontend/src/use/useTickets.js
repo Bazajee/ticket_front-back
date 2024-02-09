@@ -22,7 +22,7 @@ export async function allTicket_ () {
    ticketListComplete.value = true
 }
 
-allTicket_()
+
 
 console.log( 'out',ticketsList_.value )
 
